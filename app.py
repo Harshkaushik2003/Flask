@@ -48,7 +48,6 @@ def update(sno):
         return redirect("/")
     allTodo = Todo.query.filter_by(sno=sno).first()
     return render_template('update.html', allTodo = allTodo)
-    return 'this is products page'
 
 @app.route('/delete/<int:sno>')
 def delete(sno):
