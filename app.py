@@ -16,6 +16,11 @@ class Todo(db.Model):
 
     def __repr__(self) -> str:
         return f"{self.sno} - {self.title}"
+        
+        # Basically __repr__ me ye hota hai ki jab bhi ham koi todo ka object print kare to hame uska object print hua dikhna chahiye. to vo __repr__ se dikhega __repr__ ka matlab hai representation.
+        
+
+        # __repr__ is a special method in Python that stands for “representation”. It is used to define how an object should be represented as a string, especially when you're debugging or printing objects. 
 
 @app.route('/', methods=['GET', 'POST'])
 def hello_world():
@@ -30,11 +35,12 @@ def hello_world():
     return render_template('index.html', allTodo = allTodo)
     # return 'Hello, World!'
 
-@app.route('/show')
-def products():
-    allTodo = Todo.query.all()
-    print(allTodo)
-    return 'this is products page'
+# @app.route('/show')
+# def products():
+#     allTodo = Todo.query.all()
+#     print(allTodo)
+#     return 'this is products page'
+
 @app.route('/update/<int:sno>', methods=['GET', 'POST'])
 def update(sno):
     if request.method == 'POST':
@@ -58,6 +64,6 @@ def delete(sno):
     return redirect("/")
 
 if __name__ == "__main__":
-    app.run(debug=True, port=8000)  
+    app.run(debug=True)  
 
     #debug = true karne pr hame page pr wrong code karne par show ho jayega ki hamne kuch galat kra hai code me
